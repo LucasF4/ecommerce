@@ -16,6 +16,10 @@ app.get("/", function(req, res){
     res.render('index');
 });
 
+app.get("/carrinho", (req, res) => {
+    res.render('carrinho');
+});
+
 
 app.listen(port, () => {
     console.log(`=====> Servidor rodando na porta: ${port}`);
