@@ -1,0 +1,35 @@
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/navadm.ejs') %>
+
+<div class="container">
+    <% if(erro){ %>
+        <div class="alert alert-success mt-2" role="alert">
+            <%= erro %>
+        </div>
+    <% } %>
+    <h3 class="text-center mt-3">Lista De Produtos</h3>
+    <% products.forEach(function(products){ %>
+        <div class="justify-content-center card p-4 mb-3">
+            <p>Produto: <span style="font-weight: bold;"><%= products.nome %></span></p>
+            <p>Preço Atual: <%= products.preco.replace('.', ',') %></p>
+            <p>Descrição: <%= products.composition %></p>
+            <div>
+                <button class="btn btn-outline-danger" onclick="delProd('<%= products.product_id %>')" style="width: 15rem;">Deletar Produto</button>
+                <a class="btn btn-outline-warning" style="width: 15rem;" href="/editProduct/<%= products.product_id %>">Editar Produto</a>
+            </div>
+        </div>
+    <% }) %>
+    <a class="btn btn-outline-primary mt-4 mb-3" href="/adc-product">Adicionar Novo Produto</a>
+</div>
+<script>
+    function delProd(id){
+        axios.post('/deleteProduct', {id: id})
+        .then(res => {
+            console.log('deletado!')
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        location.reload()
+    }
+</script>

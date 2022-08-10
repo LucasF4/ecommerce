@@ -1,0 +1,23 @@
+<nav
+            class="navbar navbar-light bg-white border-bottom navbar-expand justify-content-between flex-column flex-lg-row sticky-top">
+            <img class="ms-5" src="assets/empadao.png" width="10%"/>
+                <div class="navbar-top-wrap">
+                    <ul class="nav nav-header">
+                        <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                        <% if(user != undefined) { %><li class="nav-item"><a href="#" class="nav-link">My Profile</a></li> <% } %>
+                        <li class="nav-item"><a href="/about-us" class="nav-link">About us</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+                    </ul>
+                </div>
+                <% if(user == undefined){ %>
+                    <div class="me-5">
+                        <a class="btn btn-outline-primary" href="/sing-in">Sing In</a>
+                    </div>
+                <% }else{ %>
+                    <div class="me-5">
+                        <a class="btn btn-outline-danger" href="/logout">Logout</a>
+                        <a class="btn btn-outline-success" href="/carrinho">Carrinho</a>
+                    </div>
+                <% } %>
+        </nav>

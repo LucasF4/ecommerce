@@ -24,42 +24,27 @@
 <body>
 
     <header class="main-header mb-4">
-        <nav
-            class="navbar navbar-light bg-white border-bottom navbar-expand justify-content-between flex-column flex-lg-row sticky-top">
-            <img class="ms-5" src="assets/empadao.png" width="10%"/>
-                <div class="navbar-top-wrap">
-                    <ul class="nav nav-header">
-                        <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Privacy Policy</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">About us</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
-                    </ul>
-                </div>
-        </nav>
-
+        
+        <%- include('partials/navuser.ejs') %>
        
     </header>
 
         <section class="my-5 py-5">
             <div class="container">
-                <div class="row ">
-                    <div class="col-md-4 mt-2 col-sm-6 col-lg-3">
-                        <div class="p-3 border bg-light"><img src="assets/empadao.png" class="img-thumbnail " /><p class="mt-3 text-center text-nowrap fs-6">Empada de Frango</p><a class="btn btn-outline-success">Carrinho</a></div>
+                
+                    <div class="row ">
+                        <% products.forEach(function(products){ %>
+                        <div class="col-md-4 mt-2 col-sm-6 col-lg-3">
+                            <div class="p-3 border bg-light">
+                                <img src="assets/empadao.png" class="img-thumbnail " />
+                                <p class="mt-3 text-center text-nowrap fs-6" style="font-weight: bold;"><%= products.nome %></p>
+                                <p class="mt-3 fs-6""><%= products.composition %></p>
+                                <p class="mt-3 text-nowrap fs-6">Valor: <%= products.preco.replace('.', ',') %></p>
+                                <a class="btn btn-outline-success" href="/carrinho">Carrinho</a>
+                            </div>
+                        </div>
+                        <% }) %>
                     </div>
-                    <div class="col-md-4 mt-2 col-sm-6 col-lg-3">
-                        <div class="p-3 border bg-light"><img src="assets/empadao.png" class="img-thumbnail " /><p class="mt-3 text-center text-nowrap fs-6">Empada de Carne de Sol</p><a class="btn btn-outline-success">Carrinho</a></div>
-                    </div>
-                    <div class="col-md-4 mt-2 col-sm-6 col-lg-3">
-                        <div class="p-3 border bg-light"><img src="assets/empadao.png" class="img-thumbnail " /><p class="mt-3 text-center text-nowrap fs-6">Empada de Bacalhau</p><a class="btn btn-outline-success">Carrinho</a></div>
-                    </div>
-                    <div class="col-md-4 mt-2 col-sm-6 col-lg-3">
-                        <div class="p-3 border bg-light"><img src="assets/empadao.png" class="img-thumbnail " /><p class="mt-3 text-center text-nowrap fs-6">Empada de Camarão</p><a class="btn btn-outline-success">Carrinho</a></div>
-                    </div>
-                    <div class="col-md-4 mt-2 col-sm-6 col-lg-3">
-                        <div class="p-3 border bg-light"><img src="assets/empadao.png" class="img-thumbnail " /><p class="mt-3 text-center text-nowrap fs-6">Empada de Romeu e Julieta</p><a class="btn btn-outline-success">Carrinho</a></div>
-                    </div>
-                </div>
             </div>
         </section>
     

@@ -1,0 +1,28 @@
+<%- include('../partials/head.ejs') %>
+<div id="conteudo" class="row">
+    <div class="card position-absolute top-50 start-50 translate-middle" style="width: 30rem;">
+        <form method="POST" action="/editProduct">
+            <input type="text" style="display: none;" name="id" value="<%= id %>">
+            <div class="mb-1 p-3">
+                <label for="email" class="form-label">Nome do Produto</label>
+                <input type="text" class="form-control" aria-describedby="emailHelper" name="nomeProduto" placeholder="Informe aqui o nome do produto" value="<%= nome %>" required/>
+            </div>
+            <div class="mb-1 p-3">
+                <label for="email" class="form-label">Descrição do Produto</label>
+                <textarea type="text" class="form-control" aria-describedby="emailHelper" name="descProduto"><%= desc %></textarea>
+            </div>
+            <div class="mb-1 p-3 col-5">
+                <label for="email" class="form-label">Preço do Produto</label>
+                <input type="text" class="form-control" aria-describedby="emailHelper" name="precoProduto" placeholder="Preço" value="<%= preco %>" onkeypress="$(this).mask('#.##0,00', {reverse: true})" required/>
+            </div>
+            <div class="row mb-3">
+                <button class="col-8 mx-auto btn btn-success mt-4" type="submit" >Editar Produto</button>
+            </div>
+            <div class="row mb-3">
+                <a href="/admin" class="col-8 mx-auto btn btn-outline-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
